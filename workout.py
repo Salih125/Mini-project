@@ -2,13 +2,20 @@ from exercise import Exercise
 
 class Workout():
     name = ""
-    self.exercises = []
+    exercises = []
+    workouts = []
 
     def __init__(self, name):
         self.name = name
         
-    def createWorkout():
+    # Creates a workout and add´s it to the workouts list
+    def createWorkout(self):
+        self.workouts.append(Workout)
 
-    def addExercise():
+    # Adds an exercise to the workout
+    def addExercise(self):
         self.excercises.append(Exercise)
-    def removeExercise():
+    
+    # Removes an exercise from a workout
+    def removeExercise(self):
+        self.exercises.remove(Exercise)

@@ -16,9 +16,13 @@ class Exercise:
     
 
     def addActualSets():
-        
+        sets = int(input('How many sets? '))
+        return sets
 
     def addActualReps():
-        
+        reps = int(input('How many reps? '))
+        return reps
 
     def addWeights():
+        weights = float(input('How many weights? '))
+        return weights
