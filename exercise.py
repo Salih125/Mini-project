@@ -16,7 +16,7 @@ class Exercise:
     
 
     def addActualSets():
-        geh = 0
+        
 
     def addActualReps():
         
