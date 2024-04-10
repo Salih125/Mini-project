@@ -1,12 +1,14 @@
 import PySimpleGUI as sg
 
+wList = []
+
 # Gui theme
 sg.theme('DarkTeal12')
 
-layout = [[sg.Text('New Workout: '), sg.Input() ,sg.Button('Add', key = 'addButton'), 
-           sg.Button('Remove', key = 'removeButton')],
+layout = [[sg.Text('New Workout: '), sg.Input(value = input, key = '-WINPUT-') ,sg.Button('Add', key = '-ADDBUTTON-'), 
+           sg.Button('Remove', key = '-REMOVEBUTTON-')],
           [sg.Text('Workouts')],
-        [sg.Listbox([1, 2, 3], size=(30, 25), key = 'wList')]
+        [sg.Listbox(values = wList, size=(30, 25), key = '-WLIST-')]
           ]
 
 window = sg.Window('Tracker', layout)
@@ -18,5 +20,14 @@ while 1:
     #closes the window
     if event == sg.WIN_CLOSED:
         break
+    
+    if event == '-ADDBUTTON-':
+        print('addButton pressed')
+        wList.append('-WINPUT-')
+        window['-WLIST-'].update(wList)
+        
+
+    if event == 'removeButton':
+        print('removeButton pressed')        
             
 window.close()
