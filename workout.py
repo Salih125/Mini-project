@@ -11,6 +11,10 @@ class Workout():
     # Creates a workout and add´s it to the workouts list
     def createWorkout(self):
         self.workouts.append(Workout)
+    
+    # Removes workout from the list
+    def removeWorkout(self):
+        self.workouts.remove(Workout)
 
     # Adds an exercise to the workout
     def addExercise(self):
