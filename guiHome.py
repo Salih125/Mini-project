@@ -1,18 +1,28 @@
 import PySimpleGUI as sg
+from workout import Workout
+
+# Instance of Workout class
+w = Workout('')
 
 # Gui theme
 sg.theme('DarkTeal12')
 
-wList = []
-lst = sg.Listbox(values = wList, size=(30, 25), key = '-WLIST-')
+# Gui Layout
+lst = sg.Listbox(values = w.workouts, size=(30, 25), key = '-LIST-')
 
-layout = [[sg.Text('New Workout: '), sg.Input(key = '-WINPUT-'), sg.Button('Add', key = '-ADDBUTTON-'), 
+layout = [[sg.Text('New Workout: '), sg.Input(key = '-INPUT-'), sg.Button('Add', key = '-ADDBUTTON-'), 
            sg.Button('Remove', key = '-REMOVEBUTTON-')],
           [sg.Text('Workouts')],
         [lst]
           ]
 
+# Creates window
 window = sg.Window('Tracker', layout)
+
+lists = w.workouts
+
+file = open('workouts.txt', 'r')
+contents = file.read()
 
 while 1:
     # Reads events and values from elements 
@@ -22,17 +32,19 @@ while 1:
     if event == sg.WIN_CLOSED:
         break
     
+    # Adds workout to list
     if event == '-ADDBUTTON-':
-        print('addButton pressed')
-        wList.append(values['-WINPUT-'])
-        window['-WLIST-'].update(wList)
+        w.name = values['-INPUT-']
+        w.createWorkout()
+        window['-LIST-'].update(contents)
         
-
+        
+    # Removes workout from list
     if event == '-REMOVEBUTTON-':
-        print('removeButton pressed')
         val = lst.get()[0]
-        wList.remove(val)
-        window['-WLIST-'].update(wList)
-                
-            
+        w.removeWorkout()
+        window['-LIST-'].update(w.workouts)
+    
+
+w.workoutsF.close()
 window.close()

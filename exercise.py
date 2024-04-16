@@ -2,6 +2,7 @@ class Exercise:
     name = ""
     sets = 0
     reps = 0
+    exercises = []
     actualSets = []
     actualReps = []
     weights = []
@@ -13,7 +14,14 @@ class Exercise:
         self.actualSets
         self.actualReps
         self.weights
+
+        # Adds an exercise to the workout
+    def addExercise(self):
+        self.excercises.append(self.name)
     
+    # Removes an exercise from a workout
+    def removeExercise(self):
+        self.exercises.remove(self.name)
 
     def addActualSets():
         sets = int(input('How many sets? '))

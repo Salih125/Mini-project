@@ -2,24 +2,17 @@ from exercise import Exercise
 
 class Workout():
     name = ""
-    exercises = []
     workouts = []
+    workoutsF = open('workouts.txt', 'a')
 
     def __init__(self, name):
         self.name = name
         
     # Creates a workout and add´s it to the workouts list
     def createWorkout(self):
-        self.workouts.append(Workout)
+        self.workoutsF.write(self.name)
+        #self.workouts.append(self.name)
     
     # Removes workout from the list
     def removeWorkout(self):
-        self.workouts.remove(Workout)
-
-    # Adds an exercise to the workout
-    def addExercise(self):
-        self.excercises.append(Exercise)
-    
-    # Removes an exercise from a workout
-    def removeExercise(self):
-        self.exercises.remove(Exercise)
+        self.workouts.remove(self.name)
