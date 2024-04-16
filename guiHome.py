@@ -1,9 +1,10 @@
 import PySimpleGUI as sg
 
-wList = []
-lst = sg.Listbox(values = wList, size=(30, 25), key = '-WLIST-')
 # Gui theme
 sg.theme('DarkTeal12')
+
+wList = []
+lst = sg.Listbox(values = wList, size=(30, 25), key = '-WLIST-')
 
 layout = [[sg.Text('New Workout: '), sg.Input(key = '-WINPUT-'), sg.Button('Add', key = '-ADDBUTTON-'), 
            sg.Button('Remove', key = '-REMOVEBUTTON-')],
@@ -27,7 +28,7 @@ while 1:
         window['-WLIST-'].update(wList)
         
 
-    if event == 'removeButton':
+    if event == '-REMOVEBUTTON-':
         print('removeButton pressed')
         val = lst.get()[0]
         wList.remove(val)
