@@ -1,8 +1,8 @@
 import PySimpleGUI as sg
-from workout import Workout
+from workoutData import WorkoutData
 
 # Instance of Workout class
-w = Workout('')
+w = WorkoutData('')
 
 # Gui theme
 sg.theme('DarkTeal12')
@@ -21,9 +21,6 @@ window = sg.Window('Tracker', layout)
 
 lists = w.workouts
 
-file = open('workouts.txt', 'r')
-contents = file.read()
-
 while 1:
     # Reads events and values from elements 
     event, values = window.read()
@@ -35,16 +32,27 @@ while 1:
     # Adds workout to list
     if event == '-ADDBUTTON-':
         w.name = values['-INPUT-']
-        w.createWorkout()
-        window['-LIST-'].update(contents)
+        w.addWorkout(w.name)
         
+        file = open('workoutsFile.txt', 'r')
+        contents = file.readlines()
+        file.close()
+        window['-LIST-'].update(contents)
         
     # Removes workout from list
     if event == '-REMOVEBUTTON-':
-        val = lst.get()[0]
-        w.removeWorkout()
-        window['-LIST-'].update(w.workouts)
-    
+        file = open('workoutsFile.txt', 'r')
+        contents = file.readlines()
+        file.close()
 
-w.workoutsF.close()
+        w.name = values['-INPUT-']
+        w.removeWorkout(w.name)
+        window['-LIST-'].update(contents)
+
+    if event == '-LIST-':
+        file = open('workoutsFile.txt', 'r')
+        contents = file.readlines()
+        file.close()
+
+
 window.close()
