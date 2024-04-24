@@ -8,7 +8,7 @@ w = WorkoutData('')
 sg.theme('DarkTeal12')
 
 # Gui Layout
-lst = sg.Listbox(values = w.workouts, size=(30, 25), key = '-LIST-')
+lst = sg.Listbox(values = WorkoutData.readWorkouts(), size=(30, 25), key = '-LIST-')
 
 layout = [[sg.Text('New Workout: '), sg.Input(key = '-INPUT-'), sg.Button('Add', key = '-ADDBUTTON-'), 
            sg.Button('Remove', key = '-REMOVEBUTTON-')],

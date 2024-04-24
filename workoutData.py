@@ -38,3 +38,4 @@ class WorkoutData:
         data = open('workoutsFile.txt', 'r')
         read = data.readlines()
         data.close()
+        return read
