@@ -8,7 +8,7 @@ w = WorkoutData('')
 sg.theme('DarkTeal12')
 
 # Gui Layout
-lst = sg.Listbox(values = WorkoutData.readWorkouts(), size=(30, 25), key = '-LIST-')
+lst = sg.Listbox(values = WorkoutData.readWorkouts(), size=(30, 25), key = '-LIST-', enable_events=True)
 
 layout = [[sg.Text('New Workout: '), sg.Input(key = '-INPUT-'), sg.Button('Add', key = '-ADDBUTTON-'), 
            sg.Button('Remove', key = '-REMOVEBUTTON-')],
@@ -49,10 +49,12 @@ while 1:
         w.removeWorkout(w.name)
         window['-LIST-'].update(contents)
 
+    # Opens guiWorkout when clicked at a workout
     if event == '-LIST-':
-        file = open('workoutsFile.txt', 'r')
-        contents = file.readlines()
-        file.close()
+        #file = open('workoutsFile.txt', 'r')
+        #contents = file.readlines()
+        #file.close()
 
+        sg.popup('Hello World')
 
 window.close()
