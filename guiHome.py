@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 from workoutData import WorkoutData
+import guiWorkout
 
 # Instance of Workout class
 w = WorkoutData('')
@@ -54,6 +55,7 @@ while 1:
         #file = open('workoutsFile.txt', 'r')
         #contents = file.readlines()
         #file.close()
+        guiWorkout.popup_workout()
 
         sg.popup('Hello World')
 

@@ -1,21 +1,23 @@
 import PySimpleGUI as sg
 
-# All the stuff inside your window.
-layout = [  [sg.Text("What's your name?")],
-            [sg.InputText()],
-            [sg.Button('Ok'), sg.Button('Cancel')] ]
 
-# Create the Window
-window = sg.Window('Hello Example', layout)
+def popup_workout():
+    # All the stuff inside your window.
+    layout = [  [sg.Text("What's your name?")],
+                [sg.InputText()],
+                [sg.Button('Ok'), sg.Button('Cancel')] ]
 
-# Event Loop to process "events" and get the "values" of the inputs
-while True:
-    event, values = window.read()
+    # Create the Window
+    window = sg.Window('Hello Example', layout)
 
-    # if user closes window or clicks cancel
-    if event == sg.WIN_CLOSED or event == 'Cancel':
-        break
+    # Event Loop to process "events" and get the "values" of the inputs
+    while True:
+        event, values = window.read()
 
-    print('Hello', values[0], '!')
+        # if user closes window or clicks cancel
+        if event == sg.WIN_CLOSED or event == 'Cancel':
+            break
 
-window.close()
+        print('Hello', values[0], '!')
+
+    window.close()
