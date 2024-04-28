@@ -4,29 +4,30 @@ class ExerciseData:
     name = ''
 
     # Exercises list
-    exercises = []
-    actualSets = []
-    actualReps = []
-    weights = []
+    exercisesList = []
+    actualSetsList = []
+    actualRepsList = []
+    weightsList = []
 
     def __init__(self, name):
         self.name = name
-        self.exercises
-        self.actualSets
-        self.actualReps
-        self.weights
+        self.exercisesList
+        self.actualSetsList
+        self.actualRepsList
+        self.weightsList
 
     # Adds exercise to exercises file
     def addExercise(self, name):
-        list = self.exercises.append(name)
+        self.exercisesList.append(name)
 
         data = open('exercisesFile.txt', 'a')
-        data.write(list)
+        data.write(name)
+        data.write('\n')
         data.close()
 
     # Removes exercise from exercises file
     def removeExercise(self, name):
-        list = self.exercises.remove(name)
+        #list = self.exercisesList.remove(name)
 
         # Open file in read mode to save the lines
         data = open('exercisesFile.txt', 'r')

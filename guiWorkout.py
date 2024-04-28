@@ -1,28 +1,59 @@
 import PySimpleGUI as sg
+from exerciseData import ExerciseData
 
-
-<<<<<<< HEAD
-# Create the Window
-window = sg.Window('Workout', layout)
-=======
 def popup_workout():
+
+    # Instance of ExerciseData class
+    e = ExerciseData('')
+
+    # Gui theme
+    sg.theme('DarkTeal12')
+    
+    # Gui Layout
+    lst = sg.Listbox(values = ExerciseData.readExercises(), size=(30, 25), key = '-LIST-', enable_events=True)
+    
     # All the stuff inside your window.
-    layout = [  [sg.Text("What's your name?")],
-                [sg.InputText()],
-                [sg.Button('Ok'), sg.Button('Cancel')] ]
->>>>>>> fd5f8b6028e8d418c4ec8501f05ec4de6e8b3ca5
+    layout = [  [sg.Text('Add exercise:'), sg.InputText(key = '-EX-')],
+                [sg.Text('Add sets:      '), sg.InputText(key = '-SETS-')],
+                [sg.Text('Add reps:      '), sg.InputText(key = '-REPS-')],
+                [sg.Button('Add', key = '-ADDBUTTON-'), sg.Button('Remove', key = '-REMOVEBUTTON-')],
+                [sg.Text('Exercises: ')],
+                [lst] ]
 
     # Create the Window
-    window = sg.Window('Hello Example', layout)
+    window = sg.Window('Workout', layout)
+
+    exList = e.exercisesList
 
     # Event Loop to process "events" and get the "values" of the inputs
-    while True:
+    while 1:
+        # Reads events and values from elements 
         event, values = window.read()
 
-        # if user closes window or clicks cancel
-        if event == sg.WIN_CLOSED or event == 'Cancel':
+        #closes the window
+        if event == sg.WIN_CLOSED:
             break
 
-        print('Hello', values[0], '!')
+         # Adds exercise to list
+        if event == '-ADDBUTTON-':
+            e.name = values['-EX-']
+            e.addExercise(e.name)
+        
+            file = open('exercisesFile.txt', 'r')
+            contents = file.readlines()
+            file.close()
+            window['-LIST-'].update(contents)
+
+        # Removes exercise from list
+        if event == '-REMOVEBUTTON-':
+            file = open('exercisesFile.txt', 'r')
+            contents = file.readlines()
+            file.close()
+
+            e.name = values['-EX-']
+            e.removeExercise(e.name)
+            window['-LIST-'].update(contents)
 
     window.close()
+
+popup_workout()
