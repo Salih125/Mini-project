@@ -56,4 +56,4 @@ def popup_workout():
 
     window.close()
 
-popup_workout()
+#popup_workout()
