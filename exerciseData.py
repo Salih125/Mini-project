@@ -2,6 +2,9 @@ class ExerciseData:
 
     # Exercise name
     name = ''
+    sets = 0
+    reps = 0
+    weight = 0
 
     # Exercises list
     exercisesList = []
@@ -27,7 +30,7 @@ class ExerciseData:
 
     # Removes exercise from exercises file
     def removeExercise(self, name):
-        #list = self.exercisesList.remove(name)
+        self.exercisesList.remove(name)
 
         # Open file in read mode to save the lines
         data = open('exercisesFile.txt', 'r')
@@ -49,7 +52,8 @@ class ExerciseData:
         data.close()
         return read
     
-    def actualSets(self, sets):
+    # Adds
+    def addActualSets(self, sets):
         self.actualSetsList.append(sets)
 
         data = open('setsFile.txt', 'a')
@@ -57,7 +61,7 @@ class ExerciseData:
         data.write('\n')
         data.close()
         
-    def actualReps(self, reps):
+    def addActualReps(self, reps):
         self.actualRepsList.append(reps)
 
         data = open('repsFile.txt', 'a')
@@ -72,3 +76,5 @@ class ExerciseData:
         data.write(weight)
         data.write('\n')
         data.close()
+
+    

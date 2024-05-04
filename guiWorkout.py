@@ -13,9 +13,8 @@ def popup_workout():
     lst = sg.Listbox(values = ExerciseData.readExercises(), size=(30, 25), key = '-LIST-', enable_events=True)
     
     # All the stuff inside your window.
-    layout = [  [sg.Text('Add exercise:'), sg.InputText(key = '-EX-')],
-                [sg.Text('Add sets:      '), sg.InputText(key = '-SETS-')],
-                [sg.Text('Add reps:      '), sg.InputText(key = '-REPS-')],
+    layout = [  [sg.Text('Add exercise - name: sets: reps:')],
+                [sg.InputText(key = '-EX-')],
                 [sg.Button('Add', key = '-ADDBUTTON-'), sg.Button('Remove', key = '-REMOVEBUTTON-')],
                 [sg.Text('Exercises: ')],
                 [lst] ]
@@ -38,7 +37,7 @@ def popup_workout():
         if event == '-ADDBUTTON-':
             e.name = values['-EX-']
             e.addExercise(e.name)
-        
+
             file = open('exercisesFile.txt', 'r')
             contents = file.readlines()
             file.close()
