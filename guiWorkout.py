@@ -28,7 +28,7 @@ def popup_workout():
     # Event Loop to process "events" and get the "values" of the inputs
     while 1:
         # Reads events and values from elements 
-        event, values = window.read()
+        event, values = window.read() 
 
         #closes the window
         if event == sg.WIN_CLOSED:
@@ -53,6 +53,9 @@ def popup_workout():
             e.name = values['-EX-']
             e.removeExercise(e.name)
             window['-LIST-'].update(contents)
+
+        # shows graph for exercise
+        # if event == '-LIST-':
 
     window.close()
 

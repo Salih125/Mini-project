@@ -49,11 +49,26 @@ class ExerciseData:
         data.close()
         return read
     
-    def actualSets(sets):
-        data = open()
-        
-    def actualReps(reps):
-        data = open()
+    def actualSets(self, sets):
+        self.actualSetsList.append(sets)
 
-    def addWeights(weight):
-        data = open()
+        data = open('setsFile.txt', 'a')
+        data.write(sets)
+        data.write('\n')
+        data.close()
+        
+    def actualReps(self, reps):
+        self.actualRepsList.append(reps)
+
+        data = open('repsFile.txt', 'a')
+        data.write(reps)
+        data.write('\n')
+        data.close()
+
+    def addWeights(self, weight):
+        self.weightsList.append(weight)
+
+        data = open('weightsFile.txt', 'a')
+        data.write(weight)
+        data.write('\n')
+        data.close()
