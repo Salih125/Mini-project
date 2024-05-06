@@ -53,7 +53,6 @@ def popup_workout():
             e.removeExercise(e.name)
             window['-LIST-'].update(contents)
 
-        # shows graph for exercise
         # if event == '-LIST-':
 
     window.close()

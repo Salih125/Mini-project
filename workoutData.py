@@ -20,7 +20,7 @@ class WorkoutData:
 
     # Removes workout from workouts file 
     def removeWorkout(self, name):
-        self.workouts.remove(name)
+        #self.workouts.remove(name)
 
         # Open file in read mode to save the lines
         data = open('workoutsFile.txt', 'r')

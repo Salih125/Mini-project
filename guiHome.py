@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 from workoutData import WorkoutData
 import guiWorkout
+import guiCalculator
 
 # Instance of WorkoutData class
 w = WorkoutData('')
@@ -14,7 +15,8 @@ lst = sg.Listbox(values = WorkoutData.readWorkouts(), size=(30, 25), key = '-LIS
 layout = [[sg.Text('New Workout: '), sg.Input(key = '-INPUT-'), sg.Button('Add', key = '-ADDBUTTON-'), 
            sg.Button('Remove', key = '-REMOVEBUTTON-')],
           [sg.Text('Workouts')],
-        [lst]
+        [lst],
+        [sg.Button('Calculator', key = '-CALC-')]
           ]
 
 # Creates window
@@ -52,10 +54,9 @@ while 1:
 
     # Opens guiWorkout when clicked at a workout
     if event == '-LIST-':
-        #file = open('workoutsFile.txt', 'r')
-        #contents = file.readlines()
-        #file.close()
-
         guiWorkout.popup_workout()
+
+    if event == '-CALC-':
+        guiCalculator.popup_calc()
 
 window.close()
