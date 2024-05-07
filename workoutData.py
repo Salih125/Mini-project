@@ -11,17 +11,13 @@ class WorkoutData:
 
     # Adds workout to workouts file
     def addWorkout(self, name):
-        self.workouts.append(name)
-
         data = open('workoutsFile.txt', 'a')
         data.write(name)
         data.write('\n')
         data.close()
 
     # Removes workout from workouts file 
-    def removeWorkout(self, name):
-        #self.workouts.remove(name)
-
+    def removeWorkout(self, name):  
         # Open file in read mode to save the lines
         data = open('workoutsFile.txt', 'r')
         lines = data.readlines()
